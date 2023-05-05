@@ -16,3 +16,10 @@ for (let i = 0; i < columns; ++i) {
   grid.appendChild(column);
 }
 gridContainer.appendChild(grid);
+
+const rowLoop = document.getElementsByClassName('row');
+for (let i = 0; i < rowLoop.length; i++) {
+    rowLoop[i].addEventListener("mouseover", function() {
+        rowLoop[i].style.backgroundColor = "black";
+  });
+}
