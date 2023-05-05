@@ -1,9 +1,18 @@
-for (let i = 0; i < 16; i++) {
-let div = document.createElement("div");
-div.style.width = "100px";
-div.style.height = "100px";
-div.style.background = "red";
-div.style.color = "white";
-div.style.margin = '10px'
-document.body.appendChild(div);
+let columns = 16;
+let rows = 16;
+
+const gridContainer = document.getElementById("grid-container");
+let grid = document.createElement("div");
+grid.className = "grid";
+for (let i = 0; i < columns; ++i) {
+  let column = document.createElement("div");
+  column.className = "column";
+  for (let j = 0; j < rows; ++j) {
+    let row = document.createElement("div");
+    row.className = "row";
+
+    column.appendChild(row);
+  }
+  grid.appendChild(column);
 }
+gridContainer.appendChild(grid);
