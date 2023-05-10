@@ -1,16 +1,20 @@
-getGrid(16, 16);
-
 function getGrid(columns, rows) {
   const gridContainer = document.getElementById("grid-container");
-
   let grid = document.createElement("div");
+  grid.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
+  grid.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
   grid.className = "grid";
+
+  const columnWidth = `calc(600px / ${columns})`;
   for (let i = 0; i < columns; ++i) {
     let column = document.createElement("div");
     column.className = "column";
+    column.style.width = columnWidth;
     for (let j = 0; j < rows; ++j) {
+      const rowHeight = `calc(600px / ${rows})`;
       let row = document.createElement("div");
       row.className = "row";
+      row.style.height = rowHeight;
 
       column.appendChild(row);
     }
@@ -32,3 +36,5 @@ function changeGridSize() {
   let size = prompt("Please enter a number between 1 and 100");
   getGrid(size, size);
 }
+
+getGrid(16, 16);
