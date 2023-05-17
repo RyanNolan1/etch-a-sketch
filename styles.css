@@ -16,6 +16,25 @@ body {
   justify-content: center;
 }
 
+button {
+    width: 18rem;
+    border-radius: 2rem;
+    border: 4px black solid;
+    font-size: 1.4rem;
+    font-weight:600;
+    height: 4rem;
+    background-color: orange;
+}
+
+button:hover {
+ background-color: white;
+ cursor: pointer;
+}
+
+#grid-container {
+    border: 2px black solid;  
+}
+
 .grid {
   display: grid;
   width:600px;
