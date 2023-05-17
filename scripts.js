@@ -34,6 +34,10 @@ function changeGridSize() {
   const clearContainer = document.getElementById("grid-container");
   clearContainer.innerHTML = "";
   let size = prompt("Please enter a number between 1 and 100");
+  if (size < 1 || size > 100 || isNaN(size) === true) {
+    alert("Input invalid! please enter a number between 1 and 100")
+    size = 16;
+  }
   getGrid(size, size);
 }
 
