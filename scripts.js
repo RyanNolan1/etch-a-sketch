@@ -22,10 +22,20 @@ function getGrid(columns, rows) {
   }
   gridContainer.appendChild(grid);
 
+  function getRandomColor() {
+    let letters = '0123456789ABCDEF';
+    let color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    console.log(color)
+    return color;
+  }
+
   const rowLoop = document.getElementsByClassName("row");
   for (let i = 0; i < rowLoop.length; i++) {
     rowLoop[i].addEventListener("mouseover", function () {
-      rowLoop[i].style.backgroundColor = "red";
+      rowLoop[i].style.backgroundColor = getRandomColor();
     });
   }
 }
