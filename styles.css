@@ -1,5 +1,5 @@
 * {
-    box-sizing: border-box;
+    box-sizing:border-box;
     padding: 0;
     margin: 0;
 }
@@ -38,14 +38,14 @@ button:hover {
 }
 
 #grid-container {
-    border: 2px black solid;  
+  padding: 1px;
+  background-color: black;
 }
 
 .grid {
   display: grid;
   width:600px;
   height:600px;
-  box-sizing: border-box;
 }
 
 .row {
