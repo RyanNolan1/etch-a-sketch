@@ -22,22 +22,32 @@ function getGrid(columns, rows) {
   }
   gridContainer.appendChild(grid);
 
-  function getRandomColor() {
-    let letters = '0123456789ABCDEF';
-    let color = '#';
-    for (var i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    console.log(color)
-    return color;
-  }
-
   const rowLoop = document.getElementsByClassName("row");
   for (let i = 0; i < rowLoop.length; i++) {
     rowLoop[i].addEventListener("mouseover", function () {
-      rowLoop[i].style.backgroundColor = getRandomColor();
+      rowLoop[i].style.backgroundColor = getRandomColour();
     });
   }
+}
+
+function whiteToBlack() {
+  const rowLoop = document.getElementsByClassName("row");
+  for (let i = 0; i < rowLoop.length; i++) {
+    rowLoop[i].addEventListener("mouseover", function () {
+      rowLoop[i].style.backgroundColor = "white";
+      rowLoop[i].style.opacity =
+        parseFloat(rowLoop[i].style.opacity || 1) - 0.1;
+    });
+  }
+}
+
+function getRandomColour() {
+  let letters = "0123456789ABCDEF";
+  let colour = "#";
+  for (let i = 0; i < 6; i++) {
+    colour += letters[Math.floor(Math.random() * 16)];
+  }
+  return colour;
 }
 
 function changeGridSize() {
@@ -45,7 +55,7 @@ function changeGridSize() {
   clearContainer.innerHTML = "";
   let size = prompt("Please enter a number between 1 and 100");
   if (size < 1 || size > 100 || isNaN(size) === true) {
-    alert("Input invalid! please enter a number between 1 and 100")
+    alert("Input invalid! please enter a number between 1 and 100");
     size = 16;
   }
   getGrid(size, size);
