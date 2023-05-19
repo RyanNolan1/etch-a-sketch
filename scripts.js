@@ -12,31 +12,31 @@ function getGrid(columns, rows) {
     column.style.width = columnWidth;
     for (let j = 0; j < rows; ++j) {
       const rowHeight = `calc(600px / ${rows})`;
-      let row = document.createElement("div");
-      row.className = "row";
-      row.style.height = rowHeight;
+      let cell = document.createElement("div");
+      cell.className = "cell";
+      cell.style.height = rowHeight;
 
-      column.appendChild(row);
+      column.appendChild(cell);
     }
     grid.appendChild(column);
   }
   gridContainer.appendChild(grid);
 
-  const rowLoop = document.getElementsByClassName("row");
-  for (let i = 0; i < rowLoop.length; i++) {
-    rowLoop[i].addEventListener("mouseover", function () {
-      rowLoop[i].style.backgroundColor = getRandomColour();
+  const cellLoop = document.getElementsByClassName("cell");
+  for (let i = 0; i < cellLoop.length; i++) {
+    cellLoop[i].addEventListener("mouseover", function () {
+      cellLoop[i].style.backgroundColor = getRandomColour();
     });
   }
 }
 
 function whiteToBlack() {
-  const rowLoop = document.getElementsByClassName("row");
-  for (let i = 0; i < rowLoop.length; i++) {
-    rowLoop[i].addEventListener("mouseover", function () {
-      rowLoop[i].style.backgroundColor = "white";
-      rowLoop[i].style.opacity =
-        parseFloat(rowLoop[i].style.opacity || 1) - 0.1;
+  const cellLoop = document.getElementsByClassName("cell");
+  for (let i = 0; i < cellLoop.length; i++) {
+    cellLoop[i].addEventListener("mouseover", function () {
+      cellLoop[i].style.backgroundColor = "white";
+      cellLoop[i].style.opacity =
+        parseFloat(cellLoop[i].style.opacity || 1) - 0.1;
     });
   }
 }

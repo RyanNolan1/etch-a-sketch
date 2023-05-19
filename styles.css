@@ -48,7 +48,7 @@ button:hover {
   height:600px;
 }
 
-.row {
+.cell {
   border: 2px black solid;
   background-color: white;
 }
