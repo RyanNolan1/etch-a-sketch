@@ -25,6 +25,15 @@ function getGrid(columns, rows) {
   const cellLoop = document.getElementsByClassName("cell");
   for (let i = 0; i < cellLoop.length; i++) {
     cellLoop[i].addEventListener("mouseover", function () {
+      cellLoop[i].style.backgroundColor = "blue";
+    });
+  }
+}
+
+function rainbow() {
+  const cellLoop = document.getElementsByClassName("cell");
+  for (let i = 0; i < cellLoop.length; i++) {
+    cellLoop[i].addEventListener("mouseover", function () {
       cellLoop[i].style.backgroundColor = getRandomColour();
     });
   }
@@ -34,7 +43,7 @@ function whiteToBlack() {
   const cellLoop = document.getElementsByClassName("cell");
   for (let i = 0; i < cellLoop.length; i++) {
     cellLoop[i].addEventListener("mouseover", function () {
-      cellLoop[i].style.backgroundColor = "white";
+      cellLoop[i].style.backgroundColor = "rgb(255, 255, 255)";
       cellLoop[i].style.opacity =
         parseFloat(cellLoop[i].style.opacity || 1) - 0.1;
     });
