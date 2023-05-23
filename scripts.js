@@ -21,14 +21,18 @@ function getGrid(columns, rows) {
     grid.appendChild(column);
   }
   gridContainer.appendChild(grid);
-
+}
+ 
+function chooseColour() {
   const cellLoop = document.getElementsByClassName("cell");
+  let colour = document.getElementById('colour-picker').value;
   for (let i = 0; i < cellLoop.length; i++) {
     cellLoop[i].addEventListener("mouseover", function () {
-      cellLoop[i].style.backgroundColor = "blue";
+      cellLoop[i].style.backgroundColor = colour;
     });
   }
 }
+
 
 function rainbow() {
   const cellLoop = document.getElementsByClassName("cell");
