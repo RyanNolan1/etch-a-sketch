@@ -22,10 +22,21 @@ function getGrid(columns, rows) {
   }
   gridContainer.appendChild(grid);
 }
- 
+
+function changeGridSize() {
+  const clearContainer = document.getElementById("grid-container");
+  clearContainer.innerHTML = "";
+  let size = prompt("Please enter a number between 1 and 100");
+  if (size < 1 || size > 100 || isNaN(size) === true) {
+    alert("Input invalid! please enter a number between 1 and 100");
+    size = 16;
+  }
+  getGrid(size, size);
+}
+
 function chooseColour() {
   const cellLoop = document.getElementsByClassName("cell");
-  let colour = document.getElementById('colour-picker').value;
+  let colour = document.getElementById("colour-picker").value;
   for (let i = 0; i < cellLoop.length; i++) {
     cellLoop[i].addEventListener("mouseover", function () {
       cellLoop[i].style.backgroundColor = colour;
@@ -45,7 +56,7 @@ function getRandomColour() {
 function rainbow() {
   const cellLoop = document.getElementsByClassName("cell");
   for (let i = 0; i < cellLoop.length; i++) {
-    cellLoop[i].removeEventListener("mouseover", whiteToBlack ) 
+    cellLoop[i].removeEventListener("mouseover", whiteToBlack);
     cellLoop[i].addEventListener("mouseover", function () {
       cellLoop[i].style.opacity = 1;
       cellLoop[i].style.backgroundColor = getRandomColour();
@@ -53,20 +64,10 @@ function rainbow() {
   }
 }
 
-function eraser() {
-  const cellLoop = document.getElementsByClassName("cell");
-  let colour = document.getElementById('colour-picker').value;
-  for (let i = 0; i < cellLoop.length; i++) {
-    cellLoop[i].addEventListener("mouseover", function () {
-      cellLoop[i].style.backgroundColor = 'white';
-    });
-  }
-}
-
 function whiteToBlack() {
   const cellLoop = document.getElementsByClassName("cell");
   for (let i = 0; i < cellLoop.length; i++) {
-    cellLoop[i].removeEventListener("mouseover", rainbow ) ;
+    cellLoop[i].removeEventListener("mouseover", rainbow);
     cellLoop[i].addEventListener("mouseover", function () {
       cellLoop[i].style.backgroundColor = "rgb(255, 255, 255)";
       cellLoop[i].style.opacity =
@@ -75,18 +76,20 @@ function whiteToBlack() {
   }
 }
 
-
-
-
-function changeGridSize() {
-  const clearContainer = document.getElementById("grid-container");
-  clearContainer.innerHTML = "";
-  let size = prompt("Please enter a number between 1 and 100");
-  if (size < 1 || size > 100 || isNaN(size) === true) {
-    alert("Input invalid! please enter a number between 1 and 100");
-    size = 16;
+function eraser() {
+  const cellLoop = document.getElementsByClassName("cell");
+  for (let i = 0; i < cellLoop.length; i++) {
+    cellLoop[i].addEventListener("mouseover", function () {
+      cellLoop[i].style.backgroundColor = "white";
+    });
   }
-  getGrid(size, size);
+}
+
+function clearGrid() {
+  const cellLoop = document.getElementsByClassName("cell");
+  for (let i = 0; i < cellLoop.length; i++) {
+      cellLoop[i].style.backgroundColor = "white";
+    };
 }
 
 getGrid(16, 16);
