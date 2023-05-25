@@ -80,6 +80,7 @@ function eraser() {
   for (let i = 0; i < cellLoop.length; i++) {
     cellLoop[i].addEventListener("mouseover", function () {
       cellLoop[i].style.backgroundColor = "white";
+      cellLoop[i].style.opacity = 1;
     });
   }
 }
