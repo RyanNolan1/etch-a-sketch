@@ -34,13 +34,18 @@ function changeGridSize() {
   getGrid(size, size);
 }
 
+function chooseColourHandler() {
+  let colour = document.getElementById("colour-picker").value;
+  this.style.backgroundColor = colour;
+  this.style.opacity = 1;
+}
+
 function chooseColour() {
   const cellLoop = document.getElementsByClassName("cell");
-  let colour = document.getElementById("colour-picker").value;
+  
   for (let i = 0; i < cellLoop.length; i++) {
-    cellLoop[i].addEventListener("mouseover", function () {
-      cellLoop[i].style.backgroundColor = colour;
-    });
+    cellLoop[i].removeEventListener("mouseover", whiteToBlackHandler);
+    cellLoop[i].addEventListener("mouseover", chooseColourHandler);
   }
 }
 
@@ -53,43 +58,53 @@ function getRandomColour() {
   return colour;
 }
 
+function rainbowHandler() {
+  this.style.backgroundColor = getRandomColour();
+  this.style.opacity = 1;
+}
+
 function rainbow() {
   const cellLoop = document.getElementsByClassName("cell");
   for (let i = 0; i < cellLoop.length; i++) {
-    cellLoop[i].addEventListener("mouseover", function () {
-      cellLoop[i].style.opacity = 1;
-      cellLoop[i].style.backgroundColor = getRandomColour();
-    });
+    cellLoop[i].removeEventListener("mouseover", chooseColourHandler);
+    cellLoop[i].removeEventListener("mouseover", whiteToBlackHandler);
+    cellLoop[i].addEventListener("mouseover", rainbowHandler);
   }
+}
+
+function whiteToBlackHandler() {
+  this.style.backgroundColor = "white";
+  this.style.opacity = parseFloat(this.style.opacity || 1) - 0.1;
 }
 
 function whiteToBlack() {
   const cellLoop = document.getElementsByClassName("cell");
   for (let i = 0; i < cellLoop.length; i++) {
-    cellLoop[i].addEventListener("mouseover", function () {
-      cellLoop[i].style.backgroundColor = "rgb(255, 255, 255)";
-      cellLoop[i].style.opacity =
-        parseFloat(cellLoop[i].style.opacity || 1) - 0.1;
-    });
+    cellLoop[i].removeEventListener("mouseover", chooseColourHandler);
+    cellLoop[i].removeEventListener("mouseover", rainbowHandler);
+    cellLoop[i].removeEventListener("mouseover", eraserHandler);
+    cellLoop[i].addEventListener("mouseover", whiteToBlackHandler);
   }
+}
+
+function eraserHandler() {
+  this.style.backgroundColor = "white";
+  this.style.opacity = 1;
 }
 
 function eraser() {
   const cellLoop = document.getElementsByClassName("cell");
   for (let i = 0; i < cellLoop.length; i++) {
-    cellLoop[i].addEventListener("mouseover", function () {
-      cellLoop[i].style.backgroundColor = "white";
-      cellLoop[i].style.opacity = 1;
-    });
+    cellLoop[i].addEventListener("mouseover", eraserHandler);
   }
 }
 
 function clearGrid() {
   const cellLoop = document.getElementsByClassName("cell");
   for (let i = 0; i < cellLoop.length; i++) {
-      cellLoop[i].style.backgroundColor = "white";
-      cellLoop[i].style.opacity = 1;
-    };
+    cellLoop[i].style.backgroundColor = "white";
+    cellLoop[i].style.opacity = 1;
+  }
 }
 
 getGrid(16, 16);
