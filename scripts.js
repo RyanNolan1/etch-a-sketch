@@ -67,7 +67,6 @@ function rainbow() {
 function whiteToBlack() {
   const cellLoop = document.getElementsByClassName("cell");
   for (let i = 0; i < cellLoop.length; i++) {
-    cellLoop[i].removeEventListener("mouseover", rainbow);
     cellLoop[i].addEventListener("mouseover", function () {
       cellLoop[i].style.backgroundColor = "rgb(255, 255, 255)";
       cellLoop[i].style.opacity =
@@ -89,6 +88,7 @@ function clearGrid() {
   const cellLoop = document.getElementsByClassName("cell");
   for (let i = 0; i < cellLoop.length; i++) {
       cellLoop[i].style.backgroundColor = "white";
+      cellLoop[i].style.opacity = 1;
     };
 }
 
