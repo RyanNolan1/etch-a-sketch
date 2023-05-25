@@ -11,7 +11,7 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: row;
-  gap: 1rem;
+  gap: 3rem;
   align-items: center;
   justify-content: center;
 }
@@ -22,7 +22,7 @@ body {
   gap: 1rem;
 }
 
-button {
+.buttons {
     width: 18rem;
     border-radius: 2rem;
     border: 4px black solid;
@@ -32,7 +32,28 @@ button {
     background-color: orange;
 }
 
-button:hover {
+.colour-button {
+  width: 18rem;
+  border-radius: 2rem;
+  border: 4px black solid;
+  font-size: 1.4rem;
+  font-weight:600;
+  height: 4rem;
+  background-color: orange;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:.5rem;
+  font-family: arial;
+}
+
+input {
+  background-color: orange;
+  border: none;
+  cursor: pointer;
+}
+
+.buttons:hover {
  background-color: white;
  cursor: pointer;
 }
@@ -48,7 +69,7 @@ button:hover {
   height:600px;
 }
 
-.row {
+.cell {
   border: 2px black solid;
   background-color: white;
 }
