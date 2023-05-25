@@ -56,7 +56,6 @@ function getRandomColour() {
 function rainbow() {
   const cellLoop = document.getElementsByClassName("cell");
   for (let i = 0; i < cellLoop.length; i++) {
-    cellLoop[i].removeEventListener("mouseover", whiteToBlack);
     cellLoop[i].addEventListener("mouseover", function () {
       cellLoop[i].style.opacity = 1;
       cellLoop[i].style.backgroundColor = getRandomColour();
