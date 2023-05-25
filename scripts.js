@@ -33,27 +33,6 @@ function chooseColour() {
   }
 }
 
-
-function rainbow() {
-  const cellLoop = document.getElementsByClassName("cell");
-  for (let i = 0; i < cellLoop.length; i++) {
-    cellLoop[i].addEventListener("mouseover", function () {
-      cellLoop[i].style.backgroundColor = getRandomColour();
-    });
-  }
-}
-
-function whiteToBlack() {
-  const cellLoop = document.getElementsByClassName("cell");
-  for (let i = 0; i < cellLoop.length; i++) {
-    cellLoop[i].addEventListener("mouseover", function () {
-      cellLoop[i].style.backgroundColor = "rgb(255, 255, 255)";
-      cellLoop[i].style.opacity =
-        parseFloat(cellLoop[i].style.opacity || 1) - 0.1;
-    });
-  }
-}
-
 function getRandomColour() {
   let letters = "0123456789ABCDEF";
   let colour = "#";
@@ -62,6 +41,42 @@ function getRandomColour() {
   }
   return colour;
 }
+
+function rainbow() {
+  const cellLoop = document.getElementsByClassName("cell");
+  for (let i = 0; i < cellLoop.length; i++) {
+    cellLoop[i].removeEventListener("mouseover", whiteToBlack ) 
+    cellLoop[i].addEventListener("mouseover", function () {
+      cellLoop[i].style.opacity = 1;
+      cellLoop[i].style.backgroundColor = getRandomColour();
+    });
+  }
+}
+
+function eraser() {
+  const cellLoop = document.getElementsByClassName("cell");
+  let colour = document.getElementById('colour-picker').value;
+  for (let i = 0; i < cellLoop.length; i++) {
+    cellLoop[i].addEventListener("mouseover", function () {
+      cellLoop[i].style.backgroundColor = 'white';
+    });
+  }
+}
+
+function whiteToBlack() {
+  const cellLoop = document.getElementsByClassName("cell");
+  for (let i = 0; i < cellLoop.length; i++) {
+    cellLoop[i].removeEventListener("mouseover", rainbow ) ;
+    cellLoop[i].addEventListener("mouseover", function () {
+      cellLoop[i].style.backgroundColor = "rgb(255, 255, 255)";
+      cellLoop[i].style.opacity =
+        parseFloat(cellLoop[i].style.opacity || 1) - 0.1;
+    });
+  }
+}
+
+
+
 
 function changeGridSize() {
   const clearContainer = document.getElementById("grid-container");
