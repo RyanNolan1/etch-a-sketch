@@ -70,6 +70,6 @@ input {
 }
 
 .cell {
-  border: 2px black solid;
+  border: 1px black solid;
   background-color: white;
 }

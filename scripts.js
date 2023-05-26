@@ -24,8 +24,8 @@ function getGrid(columns, rows) {
 }
 
 function changeGridSize() {
-  const clearContainer = document.getElementById("grid-container");
-  clearContainer.innerHTML = "";
+  const gridContainer = document.getElementById("grid-container");
+  gridContainer.innerHTML = "";
   let size = prompt("Please enter a number between 1 and 100");
   if (size < 1 || size > 100 || isNaN(size) === true) {
     alert("Input invalid! please enter a number between 1 and 100");
@@ -34,6 +34,8 @@ function changeGridSize() {
   getGrid(size, size);
 }
 
+const cells = document.getElementsByClassName("cell");
+
 function chooseColourHandler() {
   let colour = document.getElementById("colour-picker").value;
   this.style.backgroundColor = colour;
@@ -41,11 +43,9 @@ function chooseColourHandler() {
 }
 
 function chooseColour() {
-  const cellLoop = document.getElementsByClassName("cell");
-  
-  for (let i = 0; i < cellLoop.length; i++) {
-    cellLoop[i].removeEventListener("mouseover", whiteToBlackHandler);
-    cellLoop[i].addEventListener("mouseover", chooseColourHandler);
+  for (let i = 0; i < cells.length; i++) {
+    cells[i].removeEventListener("mouseover", whiteToBlackHandler);
+    cells[i].addEventListener("mouseover", chooseColourHandler);
   }
 }
 
@@ -64,11 +64,11 @@ function rainbowHandler() {
 }
 
 function rainbow() {
-  const cellLoop = document.getElementsByClassName("cell");
-  for (let i = 0; i < cellLoop.length; i++) {
-    cellLoop[i].removeEventListener("mouseover", chooseColourHandler);
-    cellLoop[i].removeEventListener("mouseover", whiteToBlackHandler);
-    cellLoop[i].addEventListener("mouseover", rainbowHandler);
+  for (let i = 0; i < cells.length; i++) {
+    cells[i].removeEventListener("mouseover", chooseColourHandler);
+    cells[i].removeEventListener("mouseover", whiteToBlackHandler);
+    cells[i].removeEventListener("mouseover", eraserHandler);
+    cells[i].addEventListener("mouseover", rainbowHandler);
   }
 }
 
@@ -78,12 +78,11 @@ function whiteToBlackHandler() {
 }
 
 function whiteToBlack() {
-  const cellLoop = document.getElementsByClassName("cell");
-  for (let i = 0; i < cellLoop.length; i++) {
-    cellLoop[i].removeEventListener("mouseover", chooseColourHandler);
-    cellLoop[i].removeEventListener("mouseover", rainbowHandler);
-    cellLoop[i].removeEventListener("mouseover", eraserHandler);
-    cellLoop[i].addEventListener("mouseover", whiteToBlackHandler);
+  for (let i = 0; i < cells.length; i++) {
+    cells[i].removeEventListener("mouseover", chooseColourHandler);
+    cells[i].removeEventListener("mouseover", rainbowHandler);
+    cells[i].removeEventListener("mouseover", eraserHandler);
+    cells[i].addEventListener("mouseover", whiteToBlackHandler);
   }
 }
 
@@ -93,17 +92,15 @@ function eraserHandler() {
 }
 
 function eraser() {
-  const cellLoop = document.getElementsByClassName("cell");
-  for (let i = 0; i < cellLoop.length; i++) {
-    cellLoop[i].addEventListener("mouseover", eraserHandler);
+  for (let i = 0; i < cells.length; i++) {
+    cells[i].addEventListener("mouseover", eraserHandler);
   }
 }
 
 function clearGrid() {
-  const cellLoop = document.getElementsByClassName("cell");
-  for (let i = 0; i < cellLoop.length; i++) {
-    cellLoop[i].style.backgroundColor = "white";
-    cellLoop[i].style.opacity = 1;
+  for (let i = 0; i < cells.length; i++) {
+    cells[i].style.backgroundColor = "white";
+    cells[i].style.opacity = 1;
   }
 }
 
