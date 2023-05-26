@@ -67,6 +67,7 @@ function rainbow() {
   for (let i = 0; i < cells.length; i++) {
     cells[i].removeEventListener("mouseover", chooseColourHandler);
     cells[i].removeEventListener("mouseover", whiteToBlackHandler);
+    cells[i].removeEventListener("mouseover", eraserHandler);
     cells[i].addEventListener("mouseover", rainbowHandler);
   }
 }
