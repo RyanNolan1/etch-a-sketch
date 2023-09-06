@@ -31,6 +31,6 @@ User Input Validation: The input for the number of squares per side is limited t
 To use the Etch-A-Sketch App on your local machine, follow these steps:
 
 1. Clone the repository:
-<br>git clone https://github.com/RyanNolan1/library.git
+<br>git clone https://github.com/RyanNolan1/etch-a-sketch.git
 
 2. Open index.html in your web browser to start coloring on the customizable grid.
